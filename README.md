@@ -5,7 +5,7 @@ Events Details Register your self and login
 
 ## Installation
 
-Clone Project github , use css liberary bootstrap 5.3.3
+Clone Project github , use css liberary bootstrap 5.3.3, Direct run index.html file
 
 ## Usage
 
