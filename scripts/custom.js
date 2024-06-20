@@ -3,6 +3,6 @@ document.onreadystatechange = function () {
     if (state == 'complete') {
         setTimeout(function(){
             document.getElementById('loader').style.display="none";
-        },2000);
+        },200);
     }
 }

@@ -65,6 +65,12 @@
 }
   
 /* End Loader Css */
+.ml-5{
+    margin-left: 5px;
+}
+.mr-5{
+    margin-right: 5px;
+}
 .poppins-light {
     font-family: "Poppins", sans-serif;
     font-weight: 300;
@@ -162,4 +168,179 @@
 .login-form .form-check-input:not(:checked){
     background-color: #232a31;
     border-color: #232a31;
+}
+
+/* header css */
+.header-wrapper{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+.header-right-section > .nav > .nav-item > .nav-link,
+.header-login-link > a{
+    text-decoration: none;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    opacity: 0.8;
+    position: relative;
+    padding: 8px;
+    font-size: 14px;
+}
+.header-right-section > .nav > .nav-item > .nav-link:after,
+.header-login-link > a:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0px;
+    background-color: #0d6efd;
+    transition: all 0.2s ease-in-out;
+}
+.header-login-link > a:hover:after,
+.header-login-link > a:focus:after,
+.header-right-section > .nav > .nav-item > .nav-link:hover:after,
+.header-right-section > .nav > .nav-item > .nav-link:focus:after{
+    width: 100%;
+}
+.header-right-section > .nav > .nav-item > .nav-link:hover,
+.header-right-section > .nav > .nav-item > .nav-link:focus,
+.header-login-link > a:hover,
+.header-login-link > a:focus{
+    color: #0d6efd;
+    opacity: 1;
+}
+.add-event-btn{
+    margin-left: 1rem;;
+}
+.add-event-btn > i{
+    font-size: 10px;
+    margin-right: 6px;
+}
+
+/* end header css */
+/* Slider css */
+.slider-wrapper{
+    background-image: url(../images/banner-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding: 12rem 0;
+    position: relative;
+    z-index: 9;
+}
+.slider-wrapper:after{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(17, 20, 24,0.7);
+    z-index: 1;
+}
+.slider-content{
+    position: relative;
+    z-index: 99;
+    padding: 0 1rem;
+}
+.slider-search-wrapper{
+    max-width: 70%;
+}
+.slider-search-wrapper .slider-search-input{
+    padding: 0.7rem;
+    border: 1px solid #fff;
+    border-radius: 4px 0 0 4px;
+    flex: 1;
+    overflow: auto;
+}
+.slider-search-wrapper .slider-search-input:focus{
+    border-color: #0d6efd;
+    outline: none;
+}
+.slider-search-wrapper .slider-search-btn{
+    padding: 0.7rem 1.4rem;
+    border-radius: 0 4px 4px 0; 
+}
+.slider-search-wrapper .slider-search-btn  > i{
+    font-size: 12px;
+}
+/* End Slide css */
+.about-left-section > img{
+    width: 100%;
+}
+.about-left-section{
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    max-width: 85%;
+}
+.about-left-section:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255,255,255,0.5);
+    z-index: 4;
+}
+.about-left-section .about-left-section-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    font-size: 23px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    white-space: nowrap;
+    color: #111418;
+}
+.section-header > h4{
+    letter-spacing: 2px;
+}
+.event-card{
+    border-radius: 4px;
+    box-shadow: 0 0 2px 0px rgba(0,0,0,0.2);
+    transition: all 0.5s ease-in-out;
+    margin-bottom: 1.5rem;
+}
+.event-card:hover{
+    box-shadow: 0 4px 6px -2px rgba(0,0,0,0.2);
+}
+.event-card .event-image{
+    height: 190px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-radius: 4px 4px 0 0;
+}
+.event-card .event-image > img{
+    min-height: 190px;
+    width: 100%;
+}
+.event-top{
+    padding: 10px;
+    text-align: center;
+}
+.event-content .event-content-title{
+    font-size: 15px;
+    text-decoration: none;
+    padding-bottom: 10px;
+    display: block;
+    padding-top: 5px;
+}
+.event-content .event-content-description{
+    font-size: 13px;
+}
+.event-bottom{
+    font-size: 14px;
+    
 }
