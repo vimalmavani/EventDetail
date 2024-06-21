@@ -78,8 +78,6 @@ function register(){
         alert(email + " is already register.");
         return ;
     }
-    console.log(emailArray)
-    console.log(passwordArray)
 }
 
 function login(){
