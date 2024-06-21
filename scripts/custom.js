@@ -1,9 +1,24 @@
+const toastLive = document.getElementById('commonToast');
+const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive);
+var emailArray=[];
+var passwordArray=[];
+let container = $("#eventDetails");
+let storeEventId; 
+let eventMainid;
+let newData;
+let events = [
+    {"id":"1", "title":"Brazil Carnival","location":"Surat, Gujarat", "imagepath": "images/event.jpg", "date": "February 01,2024", "Time": "12:00 PM" ,"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"},
+    {"id":"2","title":"columbia conference","location":"columbia , Africa", "imagepath": "images/event-1.jpg", "date": "February 01,2024", "Time": "12:00 PM" ,"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"},
+    {"id":"3","title":"super nova watch","location":"Los Angeles , America", "imagepath": "images/event-2.jpg", "date": "February 01,2024", "Time": "12:00 PM" ,"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"},
+]
+
+
 document.onreadystatechange = function () {
     var state = document.readyState
     if (state == 'complete') {
         setTimeout(function(){
             document.getElementById('loader').style.display="none";
-        },200);
+        },1500);
     }
 }
 
@@ -15,8 +30,7 @@ $(window).scroll(function(){
         $('#header').removeClass('fixed-header');
     }
 });
-var emailArray=[];
-var passwordArray=[];
+
 function register(){
     event.preventDefault();
 
@@ -27,19 +41,23 @@ function register(){
     var passwordRetype = document.getElementById("rConfirmPassword").value;
 
     if (email == ""){
-        alert("Email required.");
+        toastBootstrap.show();
+        $(toastBootstrap._element).find('#toastContent').text('Email required.');
         return ;
     }
     else if (password == ""){
-        alert("Password required.");
+        toastBootstrap.show();
+        $(toastBootstrap._element).find('#toastContent').text('Password required.');
         return ;
     }
     else if (passwordRetype == ""){
-        alert("Password required.");
+        toastBootstrap.show();
+        $(toastBootstrap._element).find('#toastContent').text('Password required.');
         return ;
     }
     else if ( password != passwordRetype ){
-        alert("Password don't match retype your Password.");
+        toastBootstrap.show();
+        $(toastBootstrap._element).find('#toastContent').text('Password does not match retype your Password.');
         return;
     }
     else if(emailArray.indexOf(email) == -1){
@@ -74,22 +92,27 @@ function login(){
 
     if(emailArray.indexOf(email) == -1){
         if (email == ""){
-            alert("Email required.");
+            toastBootstrap.show();
+            $(toastBootstrap._element).find('#toastContent').text('Email required.');
             return ;
         }
-        alert("Email does not exist.");
+        toastBootstrap.show();
+        $(toastBootstrap._element).find('#toastContent').text('Email does not exist.');
         return ;
     }
     else if(passwordArray[i] != password){
         if (password == ""){
-            alert("Password required.");
+            toastBootstrap.show();
+            $(toastBootstrap._element).find('#toastContent').text('Password required.');
             return ;
         }
-        alert("Password does not match.");
+        toastBootstrap.show();
+        $(toastBootstrap._element).find('#toastContent').text('Password does not match.');
         return ;
     }
     else {
-        window.location.replace("home.html");
+        var loginUrl = `home.html?user=${email}`
+        window.location.replace(loginUrl);
 
         document.getElementById("lEmail").value ="";
         document.getElementById("lPassword").value="";
@@ -106,14 +129,8 @@ function loginForm(){
     $('#registerForm').hide();
 }
 
-let events = [
-    {"id":"1", "title":"Brazil Carnival","location":"Surat, Gujarat", "imagepath": "images/event.jpg", "date": "February 01,2024", "Time": "12:00 PM" ,"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"},
-    {"id":"2","title":"columbia conference","location":"columbia , Africa", "imagepath": "images/event-1.jpg", "date": "February 01,2024", "Time": "12:00 PM" ,"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"},
-    {"id":"3","title":"super nova watch","location":"Los Angeles , America", "imagepath": "images/event-2.jpg", "date": "February 01,2024", "Time": "12:00 PM" ,"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"},
-]
 
 
-  let container = $("#eventDetails");
 
   events.forEach(function(events) {
     let eventDiv = $("<div class='col-lg-4 col-md-6'>");
@@ -138,8 +155,7 @@ let events = [
     container.append(eventDiv);
   });
 
-let storeEventId; 
-let eventMainid;
+
 function openDetails(e, getEvent){
     getEvent = $(e).attr('data-event');
     events.forEach(function(e){
@@ -148,6 +164,11 @@ function openDetails(e, getEvent){
     })
     let destinationurl = `eventDetail.html?id=${getEvent}`
     window.location.replace(destinationurl);
+}
+function checkIds(id) {
+    return events.some(function(check) {
+       return check.id === id;
+    });
 }
 window.onload = function(e) {
     let currentPage = window.location.href;
@@ -189,15 +210,17 @@ window.onload = function(e) {
                     </div>`)
             } 
         })
-       
-       
+        if(checkIds(eventMainid) == false){
+            let eventDetailsSection = $('#eventDetailsAppend');
+            eventDetailsSection.append('<div class="error-section"><h1>404</h1><p class="text-muted">Facing Technical issue Please Contact to admin</p></div>')
+        }
         
     }
 };
 function addDataToArray(...newData) {
     events = [...events, ...newData];
 }
-let newData;
+
 $('#createNewEvent').click(function(){
     event.preventDefault();
     let title = $('#eventTitle').val();
@@ -246,4 +269,3 @@ $('#createNewEvent').click(function(){
         container.append(eventDiv);
       });
 })
-

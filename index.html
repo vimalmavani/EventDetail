@@ -62,13 +62,13 @@
                                     <a class="float-end fs-14" href="javascript:void(0);">Forgot Password ?</a>
                                     <input type="password" id="lPassword" class="form-control" required placeholder="Enter Your password"/>
                                 </div>
-                                <button class="btn btn-primary my-2" onclick="login()" type="submit">Log in</button>
+                                <button class="btn btn-primary my-2" id="liveToastBtn" onclick="login()" type="submit">Log in</button>
                             </form>
                         </div>
                     </div>
                     <!-- End Login -->
-                     <!-- Register -->
-                     <div class="row g-0 my-auto" id="registerForm" style="display: none;">
+                    <!-- Register -->
+                    <div class="row g-0 my-auto" id="registerForm" style="display: none;">
                         <div class="col-11 col-md-8 col-lg-7 col-xl-6 mx-auto my-3 login-right-content">
                             <p class="text-light poppins-light login-right-register">
                                 Already a member? 
@@ -119,12 +119,23 @@
                             </form>
                         </div>
                     </div>
-                     <!-- End Register -->
+                    <!-- End Register -->
                 </div>
             </div>
         </div>
     </div>
     
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="commonToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Event Details</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastContent">
+                Please Fill Required Fields
+            </div>
+        </div>
+    </div>
     
     <script src="scripts/jquery-3.7.1.min.js" type="text/JavaScript"></script>
     <script src="scripts/popper.min.js" type="text/JavaScript"></script>
@@ -132,7 +143,7 @@
     <script src="scripts/custom.js" type="text/JavaScript"></script>
     
     <script type="text/javascript">
-        
+       
     </script>
 </body>
 </html>
